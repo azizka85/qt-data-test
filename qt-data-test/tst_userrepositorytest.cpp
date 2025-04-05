@@ -3,7 +3,7 @@
 
 #include <QSqlError>
 
-#include "userrepository.h"
+#include <qt-data-test-repository-sqlite/userrepository.h>
 
 using namespace QtDataTest::Repository::Sqlite;
 

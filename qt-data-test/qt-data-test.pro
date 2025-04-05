@@ -9,7 +9,6 @@ TEMPLATE = app
 SOURCES +=  tst_userrepositorytest.cpp
 
 INCLUDEPATH += \
-        ../qt-data-test-prototype \
-        ../qt-data-test-repository-sqlite
+        ../
 
 LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite

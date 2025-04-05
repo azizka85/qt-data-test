@@ -3,9 +3,9 @@
 
 #include <QString>
 
-#include <ilikerepository.h>
+#include <qt-data-test-prototype/ilikerepository.h>
 
-#include <qt-data-test-repository-sqlite_global.h>
+#include "qt-data-test-repository-sqlite_global.h"
 
 using namespace QtDataTest::Prototype;
 

@@ -12,8 +12,7 @@ SOURCES += \
         main.cpp
 
 INCLUDEPATH += \
-        ../qt-data-test-prototype \
-        ../qt-data-test-repository-sqlite
+        ../
 
 LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite
 

@@ -3,7 +3,7 @@
 
 #include <QSqlQuery>
 
-#include <iuserrepository.h>
+#include <qt-data-test-prototype/iuserrepository.h>
 
 #include "qt-data-test-repository-sqlite_global.h"
 

@@ -3,7 +3,7 @@
 
 #include <optional>
 
-#include <data/post.h>
+#include "data/post.h"
 
 namespace QtDataTest::Prototype {
 class IPostRepository {

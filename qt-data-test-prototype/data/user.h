@@ -5,7 +5,7 @@
 
 #include <optional>
 
-#include <data/settings.h>
+#include "data/settings.h"
 
 namespace QtDataTest::Prototype::Data {
 struct User {

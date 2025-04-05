@@ -3,9 +3,9 @@
 
 #include <QSqlQuery>
 
-#include <ipostrepository.h>
+#include <qt-data-test-prototype/ipostrepository.h>
 
-#include <qt-data-test-repository-sqlite_global.h>
+#include "qt-data-test-repository-sqlite_global.h"
 
 using namespace QtDataTest::Prototype;
 

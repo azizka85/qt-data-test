@@ -1,11 +1,11 @@
 #ifndef SESSIONREPOSITORY_H
 #define SESSIONREPOSITORY_H
 
-#include <isessionrepository.h>
+#include <qt-data-test-prototype/isessionrepository.h>
 
-#include <userrepository.h>
+#include "userrepository.h"
 
-#include <qt-data-test-repository-sqlite_global.h>
+#include "qt-data-test-repository-sqlite_global.h"
 
 using namespace QtDataTest::Prototype;
 

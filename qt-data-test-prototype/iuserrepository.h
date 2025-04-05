@@ -5,7 +5,7 @@
 
 #include <optional>
 
-#include <data/user.h>
+#include "data/user.h"
 
 namespace QtDataTest::Prototype {
 class IUserRepository {

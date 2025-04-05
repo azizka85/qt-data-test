@@ -25,7 +25,7 @@ HEADERS += \
     userrepository.h
 
 INCLUDEPATH += \
-    ../qt-data-test-prototype
+    ../
 
 DESTDIR = $$PWD/../lib
 

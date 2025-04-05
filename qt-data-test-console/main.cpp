@@ -2,10 +2,10 @@
 
 #include <QSqlError>
 
-#include <userrepository.h>
-#include <sessionrepository.h>
-#include <postrepository.h>
-#include <likerepository.h>
+#include <qt-data-test-repository-sqlite/userrepository.h>
+#include <qt-data-test-repository-sqlite/sessionrepository.h>
+#include <qt-data-test-repository-sqlite/postrepository.h>
+#include <qt-data-test-repository-sqlite/likerepository.h>
 
 using namespace QtDataTest::Repository::Sqlite;
 
