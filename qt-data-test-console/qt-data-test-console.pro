@@ -1,4 +1,4 @@
-QT += core sql
+QT += core sql network
 
 TARGET = QtDataTest.Console
 
@@ -14,7 +14,7 @@ SOURCES += \
 INCLUDEPATH += \
         ../
 
-LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite
+LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite -lQtDataTest.Repository.RestAPI
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

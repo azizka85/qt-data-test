@@ -11,4 +11,4 @@ SOURCES +=  tst_userrepositorytest.cpp
 INCLUDEPATH += \
         ../
 
-LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite
+LIBS += -L$$PWD/../lib -lQtDataTest.Repository.Sqlite -lQtDataTest.Repository.RestAPI

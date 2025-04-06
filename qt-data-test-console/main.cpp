@@ -2,12 +2,19 @@
 
 #include <QSqlError>
 
+#include <QUrl>
+
+#include <QJsonArray>
+
 #include <qt-data-test-repository-sqlite/userrepository.h>
 #include <qt-data-test-repository-sqlite/sessionrepository.h>
 #include <qt-data-test-repository-sqlite/postrepository.h>
 #include <qt-data-test-repository-sqlite/likerepository.h>
 
-using namespace QtDataTest::Repository::Sqlite;
+#include <qt-data-test-repository-rest-api/userrepository.h>
+#include <qt-data-test-repository-rest-api/sessionrepository.h>
+
+using namespace QtDataTest::Repository;
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +29,7 @@ int main(int argc, char *argv[])
     if (!db.open()) {
         qDebug() << "Error: Unable to open database: " << db.lastError().text();
     } else {
-        UserRepository userRepository(dbName);
+        Sqlite::UserRepository userRepository(dbName);
 
         auto user = Data::User {
             .firstName = "Test",
@@ -54,7 +61,7 @@ int main(int argc, char *argv[])
 
         userInstance = userRepository.getUser(1);
 
-        SessionRepository sessionRepository(&userRepository, dbName);
+        Sqlite::SessionRepository sessionRepository(&userRepository, dbName);
 
         QString sessionCode = "wewewe";
 
@@ -64,7 +71,7 @@ int main(int argc, char *argv[])
 
         sessionId = sessionRepository.getIdByCode(sessionCode);
 
-        PostRepository postRepository(dbName);
+        Sqlite::PostRepository postRepository(dbName);
 
         auto post = Data::Post {
             .title = "Title",
@@ -80,7 +87,7 @@ int main(int argc, char *argv[])
 
         auto likedPostsList = postRepository.likedList(1);
 
-        LikeRepository likeRepository(dbName);
+        Sqlite::LikeRepository likeRepository(dbName);
 
         likeRepository.createLike(1, 1);
 
@@ -90,6 +97,29 @@ int main(int argc, char *argv[])
 
         likedPostsList = postRepository.likedList(1);
     }
+
+    QString baseUrl = "https://fastapi-posts.onrender.com";
+
+    RestAPI::UserRepository userRepository(baseUrl);
+    RestAPI::SessionRepository sessionRepository(baseUrl, &userRepository);
+
+    QString email = "test@test.test";
+    QString password = "test";
+
+    auto user = Data::User {
+        .firstName = "Test",
+        .lastName = "Test",
+        .email = email,
+        .password = password
+    };
+
+    auto id = userRepository.create(user);
+
+    id = userRepository.getId(email, password);
+
+    QString sessionCode = "f8fd11de-124c-11f0-8648-7a1a7a228db8";
+
+    id = sessionRepository.getIdByCode(sessionCode);
 
     return a.exec();
 }

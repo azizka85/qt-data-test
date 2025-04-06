@@ -4,8 +4,9 @@
 #include <QSqlError>
 
 #include <qt-data-test-repository-sqlite/userrepository.h>
+#include <qt-data-test-repository-rest-api/userrepository.h>
 
-using namespace QtDataTest::Repository::Sqlite;
+using namespace QtDataTest::Repository;
 
 class UserRepositoryTest : public QObject
 {
@@ -19,6 +20,7 @@ private slots:
     void initTestCase();
     void cleanupTestCase();
     void testSqlite();
+    void testRestAPI();
 
 private:
     QString dbName;
@@ -47,7 +49,7 @@ void UserRepositoryTest::cleanupTestCase() {
 void UserRepositoryTest::testSqlite() {
     auto db = QSqlDatabase::database(dbName);
 
-    UserRepository userRepository(dbName);
+    Sqlite::UserRepository userRepository(dbName);
 
     QVERIFY(db.transaction());
 
@@ -70,7 +72,18 @@ void UserRepositoryTest::testSqlite() {
 
     auto userInstance = userRepository.getUser(userId.value());
 
-    QVERIFY(userInstance == std::nullopt);
+    QVERIFY(userInstance == std::nullopt);    
+}
+
+void UserRepositoryTest::testRestAPI() {
+    QString baseUrl = "https://fastapi-posts.onrender.com";
+
+    RestAPI::UserRepository userRepositoryRest(baseUrl);
+
+    QString email = "test@test.test";
+    QString password = "test";
+
+    QVERIFY(userRepositoryRest.getId(email, password) != std::nullopt);
 }
 
 QTEST_MAIN(UserRepositoryTest)
